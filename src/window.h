@@ -9,7 +9,7 @@ class Window : public QWidget
 public:
     Window();
     void refresh_plugins();
-    QStringList *get_elements(int type);
+    QStringList *get_elements(long long unsigned int type);
 private:
     QVBoxLayout *mLayout;
     QGraphicsView *mView;
