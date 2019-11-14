@@ -69,6 +69,7 @@ Thumbs.db
 *.Release
 debug/
 release/
+build/
 
 # Python byte code
 *.pyc

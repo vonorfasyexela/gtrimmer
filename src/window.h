@@ -1,15 +1,18 @@
 #include <QtWidgets>
+#include <gst/gst.h>
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
-class GTrimmer : public QWidget
+class Window : public QWidget
 {
     Q_OBJECT
 public:
-    GTrimmer();
+    Window();
+    void refresh_plugins();
+    QStringList *get_elements(int type);
 private:
     QVBoxLayout *mLayout;
     QGraphicsView *mView;
-    QListWidget *mList;
+    QTreeWidget *mTree;
     QGraphicsScene *mScene;
 };

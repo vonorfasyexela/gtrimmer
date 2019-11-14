@@ -1,6 +1,9 @@
 QT += widgets
+VPATH += src
 SOURCES += main.cpp \
-           gtrimmer.cpp
-HEADERS += gtrimmer.h
+           window.cpp \
+           gstreamer.cpp
+HEADERS += window.h \
+           gstreamer.h
 CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-1.0
