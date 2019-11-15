@@ -7,3 +7,4 @@ HEADERS += window.h \
            gstreamer.h
 CONFIG += link_pkgconfig
 PKGCONFIG += gstreamer-1.0
+RESOURCES = resources.qrc

@@ -14,6 +14,7 @@ Window::Window()
     mScene = new QGraphicsScene;
     mScene->addRect(QRectF(0, 0, 100, 100));
     mView->setScene(mScene);
+    this->setWindowIcon(QIcon(":/icon"));
 }
 
 void Window::refresh_plugins()
