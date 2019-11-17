@@ -1,5 +1,6 @@
 #include <QtWidgets>
 #include <gst/gst.h>
+#include "mygraphicsview.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
@@ -12,7 +13,7 @@ public:
     QStringList *get_elements(long long unsigned int type);
 private:
     QVBoxLayout *mLayout;
-    QGraphicsView *mView;
+    MyGraphicsView *mView;
     QTreeWidget *mTree;
     QGraphicsScene *mScene;
 };

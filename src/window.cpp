@@ -5,7 +5,7 @@ Window::Window()
     this->setWindowTitle(WINDOW_TITLE);
     mLayout = new QVBoxLayout;
     this->setLayout(mLayout);
-    mView = new QGraphicsView;
+    mView = new MyGraphicsView;
     mTree = new QTreeWidget;
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
