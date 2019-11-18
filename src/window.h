@@ -11,9 +11,11 @@ public:
     Window();
     void refresh_plugins();
     QStringList *get_elements(long long unsigned int type);
+    void tree_item_double_clicked(QTreeWidgetItem *item, int column);
 private:
     QVBoxLayout *mLayout;
     MyGraphicsView *mView;
     QTreeWidget *mTree;
     QGraphicsScene *mScene;
+    QToolBar *mToolBar;
 };

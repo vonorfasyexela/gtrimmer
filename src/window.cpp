@@ -7,14 +7,17 @@ Window::Window()
     this->setLayout(mLayout);
     mView = new MyGraphicsView;
     mTree = new QTreeWidget;
+    mToolBar = new QToolBar;
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
+    mLayout->addWidget(mToolBar);
     mLayout->addWidget(mView);
     mLayout->addWidget(mTree);
     mScene = new QGraphicsScene;
-    mScene->addRect(QRectF(0, 0, 100, 100));
+    // mScene->addRect(QRectF(0, 0, 100, 100));
     mView->setScene(mScene);
     this->setWindowIcon(QIcon(":/icon"));
+    QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
 }
 
 void Window::refresh_plugins()
@@ -205,4 +208,21 @@ QStringList *Window::get_elements(long long unsigned int type)
     gst_plugin_feature_list_free(plugins);
     gst_plugin_feature_list_free (l);
     return list;
+}
+
+void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
+{
+    QString item_text = item->text(column);
+    if (item_text.contains("("))
+    {
+        qDebug() << "Top level item selected";
+    }
+    else
+    {
+        qDebug() << "Double-clicked item with text:" << item_text;
+        QList<QGraphicsItem *> item_list = mScene->items();
+        qDebug() << "Number of items now is" << item_list.size();
+        QGraphicsSimpleTextItem *item = mScene->addSimpleText(item_text);
+        item->setPos(100 * item_list.size(), 0);
+    }
 }
