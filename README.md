@@ -1,5 +1,5 @@
 ## Build
 
     $ mkdir build && cd build
-    $ qmake
+    $ qmake ..
     $ make
