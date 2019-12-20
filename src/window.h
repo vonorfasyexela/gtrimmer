@@ -12,9 +12,10 @@ public:
     void refresh_plugins();
     QStringList *get_elements(long long unsigned int type);
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
+    void tree_item_clicked(QTreeWidgetItem *item, int column);
 private:
     QGridLayout *mLayout;
-    MyGraphicsView *mView;
+    // MyGraphicsView *mView;
     QTreeWidget *mTree;
     QGraphicsScene *mScene;
     QToolBar *mToolBar;

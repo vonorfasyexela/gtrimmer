@@ -5,20 +5,25 @@ Window::Window()
     this->setWindowTitle(WINDOW_TITLE);
     mLayout = new QGridLayout;
     this->setLayout(mLayout);
-    mView = new MyGraphicsView;
+    // mView = new MyGraphicsView;
     mTree = new QTreeWidget;
     mToolBar = new QToolBar;
     mTextEdit = new QTextEdit;
+    mTextEdit->setLineWrapMode(QTextEdit::NoWrap);
+    mTextEdit->setReadOnly(true);
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
-    mLayout->addWidget(mToolBar, 0, 0, 1, 2);
-    mLayout->addWidget(mView, 1, 0, 1, 2);
-    mLayout->addWidget(mTree, 2, 0);
-    mLayout->addWidget(mTextEdit, 2, 1);
+    mLayout->addWidget(mToolBar, 0, 0, 1, 4);
+    // mLayout->addWidget(mView, 1, 0, 1, 2);
+    mLayout->addWidget(mTree, 1, 0, 1, 1);
+    mLayout->addWidget(mTextEdit, 1, 1, 1, 3);
     mScene = new QGraphicsScene;
-    mView->setScene(mScene);
+    // mView->setScene(mScene);
     this->setWindowIcon(QIcon(":/icon"));
-    QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
+
+    // Connect signals and callbacks
+    // QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
+    QObject::connect(mTree, &QTreeWidget::itemClicked, this, &Window::tree_item_clicked);
 }
 
 void Window::refresh_plugins()
@@ -211,19 +216,41 @@ QStringList *Window::get_elements(long long unsigned int type)
     return list;
 }
 
-void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
+// void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
+// {
+//     QString item_text = item->text(column);
+//     if (item_text.contains("("))
+//     {
+//         qDebug() << "Top level item selected";
+//     }
+//     else
+//     {
+//         qDebug() << "Double-clicked item with text:" << item_text;
+//         QList<QGraphicsItem *> item_list = mScene->items();
+//         qDebug() << "Number of items now is" << item_list.size();
+//         QGraphicsSimpleTextItem *item = mScene->addSimpleText(item_text);
+//         item->setPos(100 * item_list.size(), 0);
+//     }
+// }
+
+void Window::tree_item_clicked(QTreeWidgetItem *item, int column)
 {
     QString item_text = item->text(column);
     if (item_text.contains("("))
     {
-        qDebug() << "Top level item selected";
+        qDebug() << "Top level item clicked";
     }
     else
     {
-        qDebug() << "Double-clicked item with text:" << item_text;
-        QList<QGraphicsItem *> item_list = mScene->items();
-        qDebug() << "Number of items now is" << item_list.size();
-        QGraphicsSimpleTextItem *item = mScene->addSimpleText(item_text);
-        item->setPos(100 * item_list.size(), 0);
+        qDebug() << "Clicked item with text:" << item_text;
+        mTextEdit->clear();
+        QProcess inspect;
+        inspect.start("gst-inspect-1.0", QStringList() << item_text);
+        if (!inspect.waitForStarted())
+            return;
+        if (!inspect.waitForFinished())
+            return;
+        QByteArray result = inspect.readAll();
+        mTextEdit->setText(QString(result));
     }
 }
