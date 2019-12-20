@@ -3,18 +3,19 @@
 Window::Window()
 {
     this->setWindowTitle(WINDOW_TITLE);
-    mLayout = new QVBoxLayout;
+    mLayout = new QGridLayout;
     this->setLayout(mLayout);
     mView = new MyGraphicsView;
     mTree = new QTreeWidget;
     mToolBar = new QToolBar;
+    mTextEdit = new QTextEdit;
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
-    mLayout->addWidget(mToolBar);
-    mLayout->addWidget(mView);
-    mLayout->addWidget(mTree);
+    mLayout->addWidget(mToolBar, 0, 0, 1, 2);
+    mLayout->addWidget(mView, 1, 0, 1, 2);
+    mLayout->addWidget(mTree, 2, 0);
+    mLayout->addWidget(mTextEdit, 2, 1);
     mScene = new QGraphicsScene;
-    // mScene->addRect(QRectF(0, 0, 100, 100));
     mView->setScene(mScene);
     this->setWindowIcon(QIcon(":/icon"));
     QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
