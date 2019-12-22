@@ -245,7 +245,13 @@ void Window::tree_item_clicked(QTreeWidgetItem *item, int column)
         qDebug() << "Clicked item with text:" << item_text;
         mTextEdit->clear();
         QProcess inspect;
-        inspect.start("gst-inspect-1.0", QStringList() << item_text);
+        QString command;
+    #ifdef Q_OS_WIN
+        command = QString("gst-inspect-1.0.exe");
+    #else
+        command = QString("gst-inspect-1.0");
+    #endif
+        inspect.start(command, QStringList() << item_text);
         if (!inspect.waitForStarted())
             return;
         if (!inspect.waitForFinished())
