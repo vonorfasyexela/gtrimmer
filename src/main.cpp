@@ -7,8 +7,6 @@
 int main(int argc, char *argv[])
 {
     qDebug() << "Start";
-    QFont font("Ubuntu Mono", 12);
-    QApplication::setFont(font);
     QApplication app(argc, argv);
     Window window;
     Gstreamer gstreamer(&argc, &argv);

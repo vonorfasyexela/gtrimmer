@@ -11,6 +11,7 @@ Window::Window()
     mTextEdit = new QTextEdit;
     mTextEdit->setLineWrapMode(QTextEdit::NoWrap);
     mTextEdit->setReadOnly(true);
+    mTextEdit->setFontFamily("Courier");
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
     mLayout->addWidget(mToolBar, 0, 0);
