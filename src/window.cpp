@@ -13,10 +13,9 @@ Window::Window()
     mTextEdit->setReadOnly(true);
     mTree->setDragEnabled(true);
     mTree->setHeaderHidden(true);
-    mLayout->addWidget(mToolBar, 0, 0, 1, 4);
-    // mLayout->addWidget(mView, 1, 0, 1, 2);
+    mLayout->addWidget(mToolBar, 0, 0);
     mLayout->addWidget(mTree, 1, 0, 1, 1);
-    mLayout->addWidget(mTextEdit, 1, 1, 1, 3);
+    mLayout->addWidget(mTextEdit, 1, 1, 1, 1);
     mScene = new QGraphicsScene;
     // mView->setScene(mScene);
     this->setWindowIcon(QIcon(":/icon"));
