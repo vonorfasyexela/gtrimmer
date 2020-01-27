@@ -14,8 +14,10 @@ public:
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
     void tree_item_clicked(QTreeWidgetItem *item, int column);
 private:
-    QGridLayout *mLayout;
-    // MyGraphicsView *mView;
+    QVBoxLayout *mExtLayout;
+    QHBoxLayout *mIntLayout;
+    QVBoxLayout *mToolLayout;
+    MyGraphicsView *mView;
     QTreeWidget *mTree;
     QGraphicsScene *mScene;
     QToolBar *mToolBar;

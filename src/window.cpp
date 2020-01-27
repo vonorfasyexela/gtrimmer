@@ -20,12 +20,26 @@ Window::Window()
     mTextEdit->setReadOnly(true);
     mTextEdit->setFontFamily("Courier");
 
+    // Setup graphics view
+    mView = new MyGraphicsView;
+    mScene = new QGraphicsScene;
+    mView->setScene(mScene);
+
     // Setup layout
-    mLayout = new QGridLayout;
-    this->setLayout(mLayout);
-    mLayout->addWidget(mToolBar, 0, 0);
-    mLayout->addWidget(mTree, 1, 0, 1, 1);
-    mLayout->addWidget(mTextEdit, 1, 1, 1, 1);
+    mExtLayout = new QVBoxLayout;
+    mIntLayout = new QHBoxLayout;
+    mToolLayout = new QVBoxLayout;
+
+    this->setLayout(mExtLayout);
+
+    mExtLayout->addWidget(mToolBar);
+    mExtLayout->addLayout(mIntLayout);
+
+    mIntLayout->addWidget(mView);
+    mIntLayout->addLayout(mToolLayout);
+
+    mToolLayout->addWidget(mTree);
+    mToolLayout->addWidget(mTextEdit);
 
     // Connect signals and callbacks
     QObject::connect(mTree, &QTreeWidget::itemClicked, this, &Window::tree_item_clicked);
