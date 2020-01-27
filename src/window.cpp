@@ -2,27 +2,32 @@
 
 Window::Window()
 {
+    // Setup main window
     this->setWindowTitle(WINDOW_TITLE);
-    mLayout = new QGridLayout;
-    this->setLayout(mLayout);
-    // mView = new MyGraphicsView;
-    mTree = new QTreeWidget;
+    this->setWindowIcon(QIcon(":/icon"));
+
+    // Setup toolbar
     mToolBar = new QToolBar;
+    
+    // Setup tree for the plugins
+    mTree = new QTreeWidget;
+    mTree->setDragEnabled(true);
+    mTree->setHeaderHidden(true);
+
+    // Setup text editor
     mTextEdit = new QTextEdit;
     mTextEdit->setLineWrapMode(QTextEdit::NoWrap);
     mTextEdit->setReadOnly(true);
     mTextEdit->setFontFamily("Courier");
-    mTree->setDragEnabled(true);
-    mTree->setHeaderHidden(true);
+
+    // Setup layout
+    mLayout = new QGridLayout;
+    this->setLayout(mLayout);
     mLayout->addWidget(mToolBar, 0, 0);
     mLayout->addWidget(mTree, 1, 0, 1, 1);
     mLayout->addWidget(mTextEdit, 1, 1, 1, 1);
-    mScene = new QGraphicsScene;
-    // mView->setScene(mScene);
-    this->setWindowIcon(QIcon(":/icon"));
 
     // Connect signals and callbacks
-    // QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
     QObject::connect(mTree, &QTreeWidget::itemClicked, this, &Window::tree_item_clicked);
 }
 
