@@ -8,8 +8,8 @@ int main(int argc, char *argv[])
 {
     qDebug() << "Start";
     QApplication app(argc, argv);
-    Window window;
     Gstreamer gstreamer(&argc, &argv);
+    Window window;
     window.refresh_plugins();
     window.showMaximized();
     return app.exec();

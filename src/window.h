@@ -5,7 +5,7 @@
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
-class Window : public QWidget
+class Window : public QMainWindow
 {
     Q_OBJECT
 public:
@@ -15,6 +15,7 @@ public:
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
     void tree_item_clicked(QTreeWidgetItem *item, int column);
 private:
+    QWidget *mCentralWidget;
     QVBoxLayout *mExtLayout;
     QHBoxLayout *mIntLayout;
     QVBoxLayout *mToolLayout;
@@ -26,4 +27,5 @@ private:
     PluginItem *mPlugin;
     QMenuBar *mMenu;
     QMenu *mFileMenu;
+    QStatusBar *mStatusBar;
 };

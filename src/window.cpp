@@ -5,14 +5,20 @@ Window::Window()
     // Setup main window
     this->setWindowTitle(WINDOW_TITLE);
     this->setWindowIcon(QIcon(":/icon"));
+    mCentralWidget = new QWidget;
+    this->setCentralWidget(mCentralWidget);
 
     // Setup menu
-    mMenu = new QMenuBar;
+    mMenu = this->menuBar();
     mFileMenu = new QMenu("File");
     mMenu->addMenu(mFileMenu);
 
     // Setup toolbar
     mToolBar = new QToolBar;
+
+    // Setup statusbar
+    mStatusBar = new QStatusBar;
+    this->setStatusBar(mStatusBar);
     
     // Setup tree for the plugins
     mTree = new QTreeWidget;
@@ -32,7 +38,6 @@ Window::Window()
     mView->setScene(mScene);
 
     // Add shapes
-//    mScene->addRect(QRectF(0, 0, 100, 100));
     mPlugin = new PluginItem;
     mScene->addItem(mPlugin);
 
@@ -41,9 +46,8 @@ Window::Window()
     mIntLayout = new QHBoxLayout;
     mToolLayout = new QVBoxLayout;
 
-    this->setLayout(mExtLayout);
+    this->centralWidget()->setLayout(mExtLayout);
 
-    mExtLayout->addWidget(mMenu);
     mExtLayout->addWidget(mToolBar);
     mExtLayout->addLayout(mIntLayout);
 
