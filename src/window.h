@@ -1,6 +1,7 @@
 #include <QtWidgets>
 #include <gst/gst.h>
 #include "mygraphicsview.h"
+#include "pluginitem.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
@@ -22,4 +23,5 @@ private:
     QGraphicsScene *mScene;
     QToolBar *mToolBar;
     QTextEdit *mTextEdit;
+    PluginItem *mPlugin;
 };

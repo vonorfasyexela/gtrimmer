@@ -26,6 +26,11 @@ Window::Window()
     mScene = new QGraphicsScene;
     mView->setScene(mScene);
 
+    // Add shapes
+//    mScene->addRect(QRectF(0, 0, 100, 100));
+    mPlugin = new PluginItem;
+    mScene->addItem(mPlugin);
+
     // Setup layout
     mExtLayout = new QVBoxLayout;
     mIntLayout = new QHBoxLayout;
