@@ -3,4 +3,5 @@
 void MyGraphicsView::dragEnterEvent(QDragEnterEvent *event)
 {
     printf("Drag entered\n");
+
 }

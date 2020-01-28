@@ -6,6 +6,11 @@ Window::Window()
     this->setWindowTitle(WINDOW_TITLE);
     this->setWindowIcon(QIcon(":/icon"));
 
+    // Setup menu
+    mMenu = new QMenuBar;
+    mFileMenu = new QMenu("File");
+    mMenu->addMenu(mFileMenu);
+
     // Setup toolbar
     mToolBar = new QToolBar;
     
@@ -38,6 +43,7 @@ Window::Window()
 
     this->setLayout(mExtLayout);
 
+    mExtLayout->addWidget(mMenu);
     mExtLayout->addWidget(mToolBar);
     mExtLayout->addLayout(mIntLayout);
 

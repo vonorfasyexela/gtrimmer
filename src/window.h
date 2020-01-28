@@ -24,4 +24,6 @@ private:
     QToolBar *mToolBar;
     QTextEdit *mTextEdit;
     PluginItem *mPlugin;
+    QMenuBar *mMenu;
+    QMenu *mFileMenu;
 };
