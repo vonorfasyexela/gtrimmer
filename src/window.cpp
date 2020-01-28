@@ -19,6 +19,7 @@ Window::Window()
     mTextEdit->setLineWrapMode(QTextEdit::NoWrap);
     mTextEdit->setReadOnly(true);
     mTextEdit->setFontFamily("Courier");
+    mTextEdit->setFontPointSize(10);
 
     // Setup graphics view
     mView = new MyGraphicsView;
