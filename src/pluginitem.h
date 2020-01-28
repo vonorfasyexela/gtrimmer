@@ -17,6 +17,8 @@ public:
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
     {
         painter->drawRoundedRect(-100, -100, 200, 200, 5, 5);
+        (void)option;
+        (void)widget;
     }
 };
 
