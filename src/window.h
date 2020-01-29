@@ -16,7 +16,6 @@ public:
     void tree_item_clicked(QTreeWidgetItem *item, int column);
 private:
     QWidget *mCentralWidget;
-    QVBoxLayout *mExtLayout;
     QHBoxLayout *mIntLayout;
     QVBoxLayout *mToolLayout;
     MyGraphicsView *mView;

@@ -15,6 +15,7 @@ Window::Window()
 
     // Setup toolbar
     mToolBar = new QToolBar;
+    this->addToolBar(mToolBar);
 
     // Setup statusbar
     mStatusBar = new QStatusBar;
@@ -42,14 +43,10 @@ Window::Window()
     mScene->addItem(mPlugin);
 
     // Setup layout
-    mExtLayout = new QVBoxLayout;
     mIntLayout = new QHBoxLayout;
     mToolLayout = new QVBoxLayout;
 
-    this->centralWidget()->setLayout(mExtLayout);
-
-    mExtLayout->addWidget(mToolBar);
-    mExtLayout->addLayout(mIntLayout);
+    this->centralWidget()->setLayout(mIntLayout);
 
     mIntLayout->addWidget(mView);
     mIntLayout->addLayout(mToolLayout);
