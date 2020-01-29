@@ -8,13 +8,26 @@ Window::Window()
     mCentralWidget = new QWidget;
     this->setCentralWidget(mCentralWidget);
 
+    // Setup actions
+    mExit = new QAction("Exit", this);
+    mZoomIn = new QAction("Zoom In", this);
+    mZoomOut = new QAction("Zoom Out", this);
+
     // Setup menu
     mMenu = this->menuBar();
     mFileMenu = new QMenu("File");
+    mFileMenu->addAction(mExit);
+    mViewMenu = new QMenu("View");
+    mViewMenu->addAction(mZoomIn);
+    mViewMenu->addAction(mZoomOut);
     mMenu->addMenu(mFileMenu);
+    mMenu->addMenu(mViewMenu);
 
     // Setup toolbar
     mToolBar = new QToolBar;
+    mToolBar->setMovable(false);
+    mToolBar->addAction(mZoomIn);
+    mToolBar->addAction(mZoomOut);
     this->addToolBar(mToolBar);
 
     // Setup statusbar
@@ -56,6 +69,9 @@ Window::Window()
 
     // Connect signals and callbacks
     QObject::connect(mTree, &QTreeWidget::itemClicked, this, &Window::tree_item_clicked);
+    QObject::connect(mZoomIn, &QAction::triggered, mView, &MyGraphicsView::zoomIn);
+    QObject::connect(mZoomOut, &QAction::triggered, mView, &MyGraphicsView::zoomOut);
+    QObject::connect(mExit, &QAction::triggered, this, &Window::close);
 }
 
 void Window::refresh_plugins()
