@@ -13,8 +13,7 @@ int main(int argc, char *argv[])
     window.refresh_plugins();
 
     // fix issue with short menubar
-    QDesktopWidget dw;
-    window.setGeometry(0, 0, dw.width(), dw.height());
+    window.setGeometry(app.screens()[0]->geometry());
     window.showMaximized();
 
     return app.exec();
