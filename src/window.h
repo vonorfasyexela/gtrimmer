@@ -23,7 +23,6 @@ private:
     QGraphicsScene *mScene;
     QToolBar *mToolBar;
     QTextEdit *mTextEdit;
-    PluginItem *mPlugin;
     QMenuBar *mMenu;
     QMenu *mFileMenu;
     QMenu *mViewMenu;

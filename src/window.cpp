@@ -52,8 +52,8 @@ Window::Window()
     mView->setScene(mScene);
 
     // Add shapes
-    mPlugin = new PluginItem;
-    mScene->addItem(mPlugin);
+    PluginItem *pluginItem = new PluginItem;
+    mScene->addItem(pluginItem);
 
     // Setup layout
     mIntLayout = new QHBoxLayout;
