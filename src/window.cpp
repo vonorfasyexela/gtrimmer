@@ -52,10 +52,6 @@ Window::Window()
     mScene = new QGraphicsScene;
     mView->setScene(mScene);
 
-    // Add shapes
-    PluginItem *pluginItem = new PluginItem;
-    mScene->addItem(pluginItem);
-
     // Setup layout
     mIntLayout = new QHBoxLayout;
     mToolLayout = new QVBoxLayout;
@@ -70,6 +66,7 @@ Window::Window()
 
     // Connect signals and callbacks
     QObject::connect(mTree, &QTreeWidget::itemClicked, this, &Window::tree_item_clicked);
+    QObject::connect(mTree, &QTreeWidget::itemDoubleClicked, this, &Window::tree_item_double_clicked);
     QObject::connect(mZoomIn, &QAction::triggered, mView, &MyGraphicsView::zoomIn);
     QObject::connect(mZoomOut, &QAction::triggered, mView, &MyGraphicsView::zoomOut);
     QObject::connect(mExit, &QAction::triggered, this, &Window::close);
@@ -265,22 +262,14 @@ QStringList *Window::get_elements(long long unsigned int type)
     return list;
 }
 
-// void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
-// {
-//     QString item_text = item->text(column);
-//     if (item_text.contains("("))
-//     {
-//         qDebug() << "Top level item selected";
-//     }
-//     else
-//     {
-//         qDebug() << "Double-clicked item with text:" << item_text;
-//         QList<QGraphicsItem *> item_list = mScene->items();
-//         qDebug() << "Number of items now is" << item_list.size();
-//         QGraphicsSimpleTextItem *item = mScene->addSimpleText(item_text);
-//         item->setPos(100 * item_list.size(), 0);
-//     }
-// }
+void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
+{
+    Q_UNUSED(item);
+    Q_UNUSED(column);
+    qDebug() << "Double clicked";
+    PluginItem *pluginItem = new PluginItem;
+    this->mScene->addItem(pluginItem);
+}
 
 void Window::tree_item_clicked(QTreeWidgetItem *item, int column)
 {
