@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     Gstreamer gstreamer(&argc, &argv);
     Window window;
     window.refresh_plugins();
+    window.showGstVersion(gst_version_string());
 
     // fix issue with short menubar
     window.setGeometry(app.screens()[0]->geometry());

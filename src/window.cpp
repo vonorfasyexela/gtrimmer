@@ -31,8 +31,10 @@ Window::Window()
     this->addToolBar(mToolBar);
 
     // Setup statusbar
+    mGstVersionStatus = new QLabel;
+    this->statusBar()->addPermanentWidget(mGstVersionStatus);
     this->statusBar()->show();
-    
+
     // Setup tree for the plugins
     mTree = new QTreeWidget;
     mTree->setDragEnabled(true);
@@ -306,4 +308,9 @@ void Window::tree_item_clicked(QTreeWidgetItem *item, int column)
         QByteArray result = inspect.readAll();
         mTextEdit->setText(QString(result));
     }
+}
+
+void Window::showGstVersion(QString version)
+{
+    mGstVersionStatus->setText(version);
 }

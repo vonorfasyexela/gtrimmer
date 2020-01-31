@@ -14,6 +14,7 @@ public:
     QStringList *get_elements(long long unsigned int type);
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
     void tree_item_clicked(QTreeWidgetItem *item, int column);
+    void showGstVersion(QString version);
 private:
     QWidget *mCentralWidget;
     QHBoxLayout *mIntLayout;
@@ -29,4 +30,5 @@ private:
     QAction *mExit;
     QAction *mZoomIn;
     QAction *mZoomOut;
+    QLabel *mGstVersionStatus;
 };
