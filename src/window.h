@@ -26,7 +26,6 @@ private:
     QMenuBar *mMenu;
     QMenu *mFileMenu;
     QMenu *mViewMenu;
-    QStatusBar *mStatusBar;
     QAction *mExit;
     QAction *mZoomIn;
     QAction *mZoomOut;

@@ -31,8 +31,7 @@ Window::Window()
     this->addToolBar(mToolBar);
 
     // Setup statusbar
-    mStatusBar = new QStatusBar;
-    this->setStatusBar(mStatusBar);
+    this->statusBar()->show();
     
     // Setup tree for the plugins
     mTree = new QTreeWidget;
