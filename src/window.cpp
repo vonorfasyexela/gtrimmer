@@ -267,7 +267,7 @@ void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
     Q_UNUSED(item);
     Q_UNUSED(column);
     qDebug() << "Double clicked";
-    PluginItem *pluginItem = new PluginItem;
+    PluginItem *pluginItem = new PluginItem(item->text(column));
     this->mScene->addItem(pluginItem);
 }
 
