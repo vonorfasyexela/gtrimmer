@@ -5,10 +5,8 @@
 
 void MyGraphicsView::dragEnterEvent(QDragEnterEvent *event)
 {
-    printf("Drag entered\n");
-    printf("Position rX: %d, rY: %d\n", event->pos().x(), event->pos().y());
+    qDebug() << "Drag entered";
+    qDebug() << "Position X:" << event->pos().x() << " Y:" << event->pos().y();
 
-//    PluginItem *plugin = new PluginItem();
-//    this->scene()->addItem(plugin);
-//    plugin->setPos(event->pos().x(), event->pos().y());
+    QGraphicsView::dragEnterEvent(event);
 }
