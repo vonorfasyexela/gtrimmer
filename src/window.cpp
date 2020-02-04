@@ -274,6 +274,7 @@ void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
     PluginItem *pluginItem = new PluginItem(pluginName);
     this->mScene->addItem(pluginItem);
     this->mGst->addElement(pluginName);
+    this->mScene->update();
 }
 
 void Window::tree_item_clicked(QTreeWidgetItem *item, int column)
