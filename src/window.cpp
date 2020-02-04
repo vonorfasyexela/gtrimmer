@@ -17,8 +17,16 @@ Window::Window(int *argc, char ***argv)
     mZoomOut->setIcon(QIcon(":/zoomout"));
     mLineAction = new QAction("Line Mode", this);
     mLineAction->setIcon(QIcon(":/pencil"));
+    mLineAction->setCheckable(true);
     mSelectAction = new QAction("Select Mode", this);
     mSelectAction->setIcon(QIcon(":/cursor"));
+    mSelectAction->setCheckable(true);
+    mSelectAction->setChecked(true);
+
+    mViewActions = new QActionGroup(this);
+    mViewActions->setExclusive(true);
+    mViewActions->addAction(mSelectAction);
+    mViewActions->addAction(mLineAction);
 
     // Setup menu
     mMenu = this->menuBar();

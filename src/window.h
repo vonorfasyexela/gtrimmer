@@ -38,6 +38,7 @@ private:
     QAction *mZoomOut;
     QAction *mLineAction;
     QAction *mSelectAction;
+    QActionGroup *mViewActions;
     QLabel *mGstVersionStatus;
 };
 
