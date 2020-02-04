@@ -10,8 +10,11 @@ Window::Window(int *argc, char ***argv)
 
     // Setup actions
     mExit = new QAction("Exit", this);
+    mExit->setIcon(QIcon(":/exit"));
     mZoomIn = new QAction("Zoom In", this);
+    mZoomIn->setIcon(QIcon(":/zoomin"));
     mZoomOut = new QAction("Zoom Out", this);
+    mZoomOut->setIcon(QIcon(":/zoomout"));
 
     // Setup menu
     mMenu = this->menuBar();

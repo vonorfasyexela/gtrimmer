@@ -1,5 +1,8 @@
-<RCC> 
-    <qresource prefix="/"> 
-        <file alias="icon">images/icons8-detective-64.png</file> 
-    </qresource> 
-</RCC> 
+<RCC>
+    <qresource prefix="/">
+        <file alias="icon">images/icons8-detective-64.png</file>
+        <file alias="zoomin">images/icons8_zoom_in_96px.png</file>
+        <file alias="zoomout">images/icons8_zoom_out_96px.png</file>
+        <file alias="exit">images/icons8_exit_96px.png</file>
+    </qresource>
+</RCC>
