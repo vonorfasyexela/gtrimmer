@@ -62,5 +62,9 @@ void PluginItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 
 QRectF PluginItem::boundingRect() const
 {
-    return QRectF(mAlwaysSinksNum ? -mStep : 0, 0, mWidth + (mAlwaysSourcesNum ? mStep : 0), mHeight + 15);
+    int width = mWidth +
+            (mAlwaysSinksNum ? mStep : 0) +
+            (mAlwaysSourcesNum ? mStep : 0);
+
+    return QRectF(mAlwaysSinksNum ? -mStep : 0, 0, width, mHeight + 15);
 }
