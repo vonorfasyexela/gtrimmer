@@ -1,6 +1,6 @@
 #include "window.h"
 
-Window::Window()
+Window::Window(int *argc, char ***argv)
 {
     // Setup main window
     this->setWindowTitle(WINDOW_TITLE);
@@ -70,6 +70,9 @@ Window::Window()
     QObject::connect(mZoomIn, &QAction::triggered, mView, &MyGraphicsView::zoomIn);
     QObject::connect(mZoomOut, &QAction::triggered, mView, &MyGraphicsView::zoomOut);
     QObject::connect(mExit, &QAction::triggered, this, &Window::close);
+
+    // Setup GStreamer
+    mGst = new Gstreamer(argc, argv);
 }
 
 void Window::refresh_plugins()
@@ -267,8 +270,10 @@ void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
     Q_UNUSED(item);
     Q_UNUSED(column);
     qDebug() << "Double clicked";
-    PluginItem *pluginItem = new PluginItem(item->text(column));
+    QString pluginName(item->text(column));
+    PluginItem *pluginItem = new PluginItem(pluginName);
     this->mScene->addItem(pluginItem);
+    this->mGst->addElement(pluginName);
 }
 
 void Window::tree_item_clicked(QTreeWidgetItem *item, int column)

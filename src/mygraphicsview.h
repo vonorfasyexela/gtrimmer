@@ -1,3 +1,6 @@
+#ifndef MYGRAPHICSVIEW_H
+#define MYGRAPHICSVIEW_H
+
 #include <QGraphicsView>
 
 class MyGraphicsView : public QGraphicsView
@@ -15,3 +18,5 @@ public slots:
         this->scale(0.8, 0.8);
     }
 };
+
+#endif // MYGRAPHICSVIEW_H

@@ -3,9 +3,10 @@
 Gstreamer::Gstreamer(int *argc, char ***argv)
 {
     gst_init(argc, argv);
+    mPipeline = gst_pipeline_new(NULL);
 };
 
-QStringList *Gstreamer::get_sources_list()
+QStringList *Gstreamer::getSourcesList()
 {
     QStringList *list = new QStringList;
     // get the list of plugins
@@ -20,4 +21,10 @@ QStringList *Gstreamer::get_sources_list()
 
     list->sort();
     return list;
+}
+
+void Gstreamer::addElement(QString pluginName)
+{
+    GstElement *element = gst_element_factory_make(qPrintable(pluginName), NULL);
+    gst_bin_add(GST_BIN(mPipeline), element);
 }

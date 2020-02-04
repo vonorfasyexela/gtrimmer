@@ -1,7 +1,11 @@
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include <QtWidgets>
 #include <gst/gst.h>
 #include "mygraphicsview.h"
 #include "pluginitem.h"
+#include "gstreamer.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
@@ -9,13 +13,14 @@ class Window : public QMainWindow
 {
     Q_OBJECT
 public:
-    Window();
+    Window(int *argc, char ***argv);
     void refresh_plugins();
     QStringList *get_elements(long long unsigned int type);
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
     void tree_item_clicked(QTreeWidgetItem *item, int column);
     void showGstVersion(QString version);
 private:
+    Gstreamer *mGst;
     QWidget *mCentralWidget;
     QHBoxLayout *mIntLayout;
     QVBoxLayout *mToolLayout;
@@ -32,3 +37,5 @@ private:
     QAction *mZoomOut;
     QLabel *mGstVersionStatus;
 };
+
+#endif // WINDOW_H
