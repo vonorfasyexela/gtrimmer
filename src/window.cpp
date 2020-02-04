@@ -273,7 +273,7 @@ QStringList *Window::get_elements(long long unsigned int type)
     QStringList *list = new QStringList;
     GList *plugins = gst_element_factory_list_get_elements(type, GST_RANK_NONE);
     GList *l;
-    for (l = plugins; l != NULL; l = l->next)
+    for (l = plugins; l != nullptr; l = l->next)
     {
         list->append(gst_object_get_name(GST_OBJECT(l->data)));
     }
@@ -284,8 +284,8 @@ QStringList *Window::get_elements(long long unsigned int type)
 
 void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
 {
-    Q_UNUSED(item);
-    Q_UNUSED(column);
+    Q_UNUSED(item)
+    Q_UNUSED(column)
     qDebug() << "Double clicked";
     QString pluginName(item->text(column));
     PluginItem *pluginItem = new PluginItem(pluginName);
