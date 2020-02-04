@@ -4,5 +4,7 @@
         <file alias="zoomin">images/icons8_zoom_in_96px.png</file>
         <file alias="zoomout">images/icons8_zoom_out_96px.png</file>
         <file alias="exit">images/icons8_exit_96px.png</file>
+        <file alias="cursor">images/icons8_cursor_96px.png</file>
+        <file alias="pencil">images/icons8_pencil_drawing_96px.png</file>
     </qresource>
 </RCC>

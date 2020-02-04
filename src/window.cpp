@@ -15,6 +15,10 @@ Window::Window(int *argc, char ***argv)
     mZoomIn->setIcon(QIcon(":/zoomin"));
     mZoomOut = new QAction("Zoom Out", this);
     mZoomOut->setIcon(QIcon(":/zoomout"));
+    mLineAction = new QAction("Line Mode", this);
+    mLineAction->setIcon(QIcon(":/pencil"));
+    mSelectAction = new QAction("Select Mode", this);
+    mSelectAction->setIcon(QIcon(":/cursor"));
 
     // Setup menu
     mMenu = this->menuBar();
@@ -31,6 +35,8 @@ Window::Window(int *argc, char ***argv)
     mToolBar->setMovable(false);
     mToolBar->addAction(mZoomIn);
     mToolBar->addAction(mZoomOut);
+    mToolBar->addAction(mSelectAction);
+    mToolBar->addAction(mLineAction);
     this->addToolBar(mToolBar);
 
     // Setup statusbar
