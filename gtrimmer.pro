@@ -4,11 +4,13 @@ SOURCES += main.cpp \
            window.cpp \
            gstreamer.cpp \
            mygraphicsview.cpp \
-    src/pluginitem.cpp
+    src/pluginitem.cpp \
+    src/mygraphicsscene.cpp
 HEADERS += window.h \
            gstreamer.h \
            mygraphicsview.h \
-    src/pluginitem.h
+    src/pluginitem.h \
+    src/mygraphicsscene.h
 unix {
     CONFIG += link_pkgconfig
     PKGCONFIG += gstreamer-1.0

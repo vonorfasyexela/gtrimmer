@@ -49,7 +49,7 @@ Window::Window(int *argc, char ***argv)
 
     // Setup graphics view
     mView = new MyGraphicsView;
-    mScene = new QGraphicsScene;
+    mScene = new MyGraphicsScene;
     mView->setScene(mScene);
 
     // Setup layout

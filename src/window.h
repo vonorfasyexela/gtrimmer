@@ -6,6 +6,7 @@
 #include "mygraphicsview.h"
 #include "pluginitem.h"
 #include "gstreamer.h"
+#include "mygraphicsscene.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
 
@@ -26,7 +27,7 @@ private:
     QVBoxLayout *mToolLayout;
     MyGraphicsView *mView;
     QTreeWidget *mTree;
-    QGraphicsScene *mScene;
+    MyGraphicsScene *mScene;
     QToolBar *mToolBar;
     QTextEdit *mTextEdit;
     QMenuBar *mMenu;
