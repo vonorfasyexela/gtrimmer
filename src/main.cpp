@@ -6,6 +6,10 @@
 
 int main(int argc, char *argv[])
 {
+    // on some platforms resources are placed as static library
+    // and this string is required there
+    Q_INIT_RESOURCE(resources);
+
     qDebug() << "Start";
     QApplication app(argc, argv);
 //    Gstreamer gstreamer(&argc, &argv);
