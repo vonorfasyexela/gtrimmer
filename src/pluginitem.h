@@ -10,6 +10,8 @@ public:
     PluginItem(QString pluginName);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
     QRectF boundingRect() const override;
+protected:
+    virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *event);
 private:
     QString mPluginName;
     int32_t mAlwaysSinksNum = 0;

@@ -68,3 +68,10 @@ QRectF PluginItem::boundingRect() const
 
     return QRectF(mAlwaysSinksNum ? -mStep : 0, 0, width, mHeight + 15);
 }
+
+void PluginItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
+{
+    Q_UNUSED(event)
+    qDebug() << "Hover entered";
+    QGraphicsItem::hoverEnterEvent(event);
+}
