@@ -284,14 +284,13 @@ QStringList *Window::get_elements(long long unsigned int type)
 
 void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
 {
-    Q_UNUSED(item)
-    Q_UNUSED(column)
-    qDebug() << "Double clicked";
-    QString pluginName(item->text(column));
-    PluginItem *pluginItem = new PluginItem(pluginName);
-    this->mScene->addItem(pluginItem);
-    this->mGst->addElement(pluginName);
-    this->mScene->update();
+    if (item->type() == TREE_ELEMENT_CHILD) {
+        QString pluginName(item->text(column));
+        PluginItem *pluginItem = new PluginItem(pluginName);
+        this->mScene->addItem(pluginItem);
+        this->mGst->addElement(pluginName);
+        this->mScene->update();
+    }
 }
 
 void Window::tree_item_selection_changed()
