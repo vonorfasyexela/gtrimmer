@@ -9,6 +9,11 @@
 #include "mygraphicsscene.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
+enum TreeElementType
+{
+    TREE_ELEMENT_TOP,
+    TREE_ELEMENT_CHILD
+};
 
 class Window : public QMainWindow
 {
@@ -18,7 +23,7 @@ public:
     void refresh_plugins();
     QStringList *get_elements(long long unsigned int type);
     void tree_item_double_clicked(QTreeWidgetItem *item, int column);
-    void tree_item_clicked(QTreeWidgetItem *item, int column);
+    void tree_item_selection_changed();
     void showGstVersion(QString version);
 private:
     Gstreamer *mGst;
