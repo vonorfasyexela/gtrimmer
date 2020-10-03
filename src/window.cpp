@@ -298,24 +298,9 @@ void Window::tree_item_selection_changed()
 {
     QTreeWidgetItem *selected_item = mTree->selectedItems()[0];
     if (selected_item) {
-        if (selected_item->type() == TREE_ELEMENT_TOP) {
-            mTextEdit->clear();
-        } else if (selected_item->type() == TREE_ELEMENT_CHILD) {
-            mTextEdit->clear();
-            QProcess inspect;
-            QString command;
-        #ifdef Q_OS_WIN
-            command = QString("gst-inspect-1.0.exe");
-        #else
-            command = QString("gst-inspect-1.0");
-        #endif
-            inspect.start(command, QStringList() << selected_item->text(0));
-            if (!inspect.waitForStarted())
-                return;
-            if (!inspect.waitForFinished())
-                return;
-            QByteArray result = inspect.readAll();
-            mTextEdit->setText(QString(result));
+        mTextEdit->clear();
+        if (selected_item->type() == TREE_ELEMENT_CHILD) {
+            mTextEdit->setText(mGst->getPluginInfo(selected_item->text(0)));
         }
     }
 }

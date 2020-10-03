@@ -28,3 +28,21 @@ void Gstreamer::addElement(QString pluginName)
     GstElement *element = gst_element_factory_make(qPrintable(pluginName), nullptr);
     gst_bin_add(GST_BIN(mPipeline), element);
 }
+
+QString Gstreamer::getPluginInfo(QString pluginName)
+{
+    QProcess inspect;
+    QString command;
+#ifdef Q_OS_WIN
+    command = QString("gst-inspect-1.0.exe");
+#else
+    command = QString("gst-inspect-1.0");
+#endif
+    inspect.start(command, QStringList() << pluginName);
+    if (!inspect.waitForStarted())
+        return QString("");
+    if (!inspect.waitForFinished())
+        return QString("");
+    QByteArray result = inspect.readAll();
+    return QString(result);
+}
