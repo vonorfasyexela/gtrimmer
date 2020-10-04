@@ -9,11 +9,19 @@
 #include "mygraphicsscene.h"
 
 #define WINDOW_TITLE "GTrimmer - the inspector of GStreamer"
+
+// For discriminating top level items and childs in the tree view
 enum TreeElementType
 {
     TREE_ELEMENT_TOP,
     TREE_ELEMENT_CHILD
 };
+
+// Helper structure for better code
+typedef struct {
+    uint64_t type;
+    QString name;
+} PluginsGroup;
 
 class Window : public QMainWindow
 {
@@ -45,6 +53,7 @@ private:
     QAction *mSelectAction;
     QActionGroup *mViewActions;
     QLabel *mGstVersionStatus;
+    void handleGroup(QTreeWidget *tree, PluginsGroup group);
 };
 
 #endif // WINDOW_H
