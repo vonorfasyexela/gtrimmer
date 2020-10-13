@@ -68,6 +68,7 @@ Window::Window(int *argc, char ***argv)
     mView = new MyGraphicsView;
     mScene = new MyGraphicsScene;
     mView->setScene(mScene);
+    mView->setAcceptDrops(true);
 
     // Setup layout
     mIntLayout = new QHBoxLayout;
@@ -94,11 +95,13 @@ Window::Window(int *argc, char ***argv)
 
 void Window::handleGroup(QTreeWidget *tree, PluginsGroup group) {
     QTreeWidgetItem *top_item = new QTreeWidgetItem(tree, TREE_ELEMENT_TOP);
+    top_item->setFlags(Qt::NoItemFlags | Qt::ItemIsEnabled);
     QStringList *list;
     list = get_elements(group.type);
     for (int i = 0; i < list->size(); i++)
     {
         QTreeWidgetItem *child_item = new QTreeWidgetItem(top_item, TREE_ELEMENT_CHILD);
+        child_item->setFlags(Qt::NoItemFlags | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemNeverHasChildren);
         child_item->setText(0, list->at(i));
     }
     top_item->setText(0, group.name + " (" + QString::number(list->size()) + ")");
@@ -162,11 +165,13 @@ void Window::tree_item_double_clicked(QTreeWidgetItem *item, int column)
 
 void Window::tree_item_selection_changed()
 {
-    QTreeWidgetItem *selected_item = mTree->selectedItems()[0];
-    if (selected_item) {
-        mTextEdit->clear();
-        if (selected_item->type() == TREE_ELEMENT_CHILD) {
-            mTextEdit->setText(mGst->getPluginInfo(selected_item->text(0)));
+    if (mTree->selectedItems().size() > 0) {
+        QTreeWidgetItem *selected_item = mTree->selectedItems()[0];
+        if (selected_item) {
+            mTextEdit->clear();
+            if (selected_item->type() == TREE_ELEMENT_CHILD) {
+                mTextEdit->setText(mGst->getPluginInfo(selected_item->text(0)));
+            }
         }
     }
 }
