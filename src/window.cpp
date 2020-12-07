@@ -69,6 +69,17 @@ Window::Window(int *argc, char ***argv)
     mScene = new MyGraphicsScene;
     mView->setScene(mScene);
     mView->setAcceptDrops(true);
+    mView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mScene->addRect(0, 0, 100, 100);
+    mScene->addRect(200, 200, 100, 100);
+    mScene->addRect(400, 400, 100, 100);
+    mScene->addRect(600, 600, 100, 100);
+    mScene->addRect(800, 800, 100, 100);
+    mScene->addRect(1000, 1000, 100, 100);
+    mScene->addRect(1200, 1200, 100, 100);
+    mScene->addRect(1400, 1400, 100, 100);
+    mScene->addRect(1600, 1600, 100, 100);
 
     // Setup layout
     mIntLayout = new QHBoxLayout;

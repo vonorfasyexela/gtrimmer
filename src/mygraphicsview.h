@@ -8,6 +8,9 @@ class MyGraphicsView : public QGraphicsView
     Q_OBJECT
 protected:
     virtual void dragEnterEvent(QDragEnterEvent *event);
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
 public slots:
     void zoomIn()
     {
@@ -17,6 +20,10 @@ public slots:
     {
         this->scale(0.8, 0.8);
     }
+private:
+    bool mScroll = false;
+    int mScrollStartX = 0;
+    int mScrollStartY = 0;
 };
 
 #endif // MYGRAPHICSVIEW_H
