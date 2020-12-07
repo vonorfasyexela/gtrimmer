@@ -20,6 +20,7 @@ void MyGraphicsView::mousePressEvent(QMouseEvent *event) {
         mScrollStartX = event->x();
         mScrollStartY = event->y();
     }
+    QGraphicsView::mousePressEvent(event);
 }
 
 void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) {
@@ -29,6 +30,7 @@ void MyGraphicsView::mouseMoveEvent(QMouseEvent *event) {
         mScrollStartX = event->x();
         mScrollStartY = event->y();
     }
+    QGraphicsView::mouseMoveEvent(event);
 }
 
 void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event) {
@@ -36,4 +38,5 @@ void MyGraphicsView::mouseReleaseEvent(QMouseEvent *event) {
         setCursor(Qt::ArrowCursor);
         mScroll = false;
     }
+    QGraphicsView::mouseReleaseEvent(event);
 }
